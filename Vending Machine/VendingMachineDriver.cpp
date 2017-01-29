@@ -85,11 +85,11 @@ VendingMachine stockVendingMachine()
 											"Twix", "Kit Kat", "Reese's" , "Almond Joy",
 											"Butterfinger", "Mike & Ike's", "Nature Valey" , "Chunky Cookies" };
 							
-	double productPrices[PRODUCT_COUNT] = { 1.50, 1.50, 1.50 , 1.50,
-											1.50, 1.50, 1.50 , 1,
-											2.25, 1.50, 1.50 , 1.50,
-											1.50, 1.50, 1.50 , 1.50,
-											1.50, 1.50, 1.50 , 1.50 };
+	double productPrices[PRODUCT_COUNT] = { 1.55, 1.55, 1.55 , 1.55,
+											1.55, 1.55, 1.55 , 1.25,
+											2.25, 1.55, 1.55 , 1.55,
+											1.55, 1.55, 1.55 , 1.55,
+											1.55, 1.55, 1.55 , 1.55 };
 						
 	VendingMachine newVendingMachine = VendingMachine();
 	

@@ -21,12 +21,109 @@ VendingMachine::VendingMachine()
 	}	
 }
 
+
+void VendingMachine::centerText(string text, int lineWidth)
+{
+	int frontSpace;
+	int afterSpace;
+	int extraSpace = lineWidth - text.length();
+	if (extraSpace % 2 == 0)
+	{
+		frontSpace = extraSpace/2;
+		afterSpace = frontSpace;
+	}
+	else
+	{
+		frontSpace = extraSpace/2;
+		afterSpace = frontSpace + 1;
+	}
+	
+	for (int i = 0; i < frontSpace; i++)
+	{
+		cout << " ";
+	}
+	cout << text;
+	for (int i = 0; i < afterSpace; i++)
+	{
+		cout << " ";
+	}
+}
+
+void VendingMachine::centerDouble(double var, int lineWidth)
+{
+	int frontSpace;
+	int afterSpace;
+	int extraSpace = lineWidth - 3;
+	if (extraSpace % 2 == 0)
+	{
+		frontSpace = extraSpace/2;
+		afterSpace = frontSpace;
+	}
+	else
+	{
+		frontSpace = extraSpace/2;
+		afterSpace = frontSpace + 1;
+	}
+	
+	for (int i = 0; i < frontSpace; i++)
+	{
+		cout << " ";
+	}
+	cout << setprecision(3) << var;
+	for (int i = 0; i < afterSpace; i++)
+	{
+		cout << " ";
+	}
+}
+
+
+
 void VendingMachine::printContents()
 {
-	for (int i = 0; i < PRODUCT_COUNT; i++)
+	for (int j = 0; j < 4; j++)
 	{
-		cout << "Product Name at location " << i + 1 << " :" << merchandise[i].getProductName() << endl;
+		cout << "---------------------------";
 	}
+	cout << endl;
+	
+	
+	int index = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		int tempIndex = index;
+		for (int j = 0; j < 4; j++)
+		{
+			string ind = to_string(tempIndex + 1);
+			cout <<  "|";
+			centerText( ind, 25);
+			cout << "|";
+			tempIndex++;
+		}
+		cout << endl;
+		tempIndex = index;
+		for (int j = 0; j < 4; j++)
+		{
+			cout <<  "|";
+			centerText(merchandise[tempIndex].getProductName(), 25);
+			cout << "|";
+			tempIndex++;
+		}
+		cout << endl;
+		for (int j = 0; j < 4; j++)
+		{
+			cout <<  "|";
+			centerDouble(merchandise[index].getPrice(), 24);
+			cout << "|";
+			index++;
+		}
+		cout << endl;
+		for (int j = 0; j < 4; j++)
+		{
+			cout << "---------------------------";
+		}
+		cout << endl;
+	}
+	
 }
 
 void VendingMachine::assignProductLocation(Item _item)
