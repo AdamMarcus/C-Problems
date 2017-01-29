@@ -14,19 +14,40 @@ using namespace std;
 
 VendingMachine::VendingMachine()
 {
-	
+	for (int i = 0; i < PRODUCT_COUNT; i++)
+	{
+		Item emptyItem = Item("NULL" , -1);
+		merchandise[i] = emptyItem;
+	}	
 }
 
 void VendingMachine::printContents()
 {
 	for (int i = 0; i < PRODUCT_COUNT; i++)
 	{
-		cout << setw(20) << "|" << /*merchandise[i].getProductName() <<*/ "|" << endl;
-		//cout << setw(20) << "|" << i << " : " << merchandise[i].getPrice() << "|" << endl;
+		cout << "Product Name at location " << i + 1 << " :" << merchandise[i].getProductName() << endl;
 	}
 }
 
 void VendingMachine::assignProductLocation(Item _item)
 {
-	
+	for (int i = 0; i < PRODUCT_COUNT; i++)
+	{
+		if (merchandise[i].getPrice() == -1)
+		{
+				merchandise[i] = _item;
+				i = PRODUCT_COUNT;
+		}	
+	}	
 }
+
+Item VendingMachine::getItemAtIndex(int index)
+{
+	return merchandise[index];
+}	
+
+void VendingMachine::removeItemAtIndex(int index)
+{
+	Item emptyItem = Item("NULL" , -1);
+	merchandise[index] = emptyItem;
+}	

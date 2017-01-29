@@ -9,7 +9,7 @@
 
 # Macros/variables
 OBJS = Item.o VendingMachine.o VendingMachineDriver.o
-CPPFLAGS = -std=c++11
+CPPFLAGS = -Wall -std=c++11
 PROG = prog
 CC = g++
 

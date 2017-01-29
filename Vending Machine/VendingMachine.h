@@ -20,6 +20,8 @@ class VendingMachine
 	VendingMachine();
 	void assignProductLocation(Item);
 	void printContents();
+	Item getItemAtIndex(int);
+	void removeItemAtIndex(int);
 	void centerText(string, int);
 	
 	private:

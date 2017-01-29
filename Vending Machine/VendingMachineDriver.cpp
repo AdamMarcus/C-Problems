@@ -15,31 +15,66 @@ This is the driver for the vending machine application.
 using namespace std;
 
 VendingMachine stockVendingMachine();
+void takePayment(double);
+
 
 int main()
 {
-  bool done = false;
-  while (!done)		//write menu
-  {
-    VendingMachine myVendingMachine = stockVendingMachine();
-    myVendingMachine.printContents();
-   
-    cout << "======Main Menu======" << endl;
-    cout << "Enter any character to continue!" << endl;
-    string userChoiceString;
-    cin >> userChoiceString;
-   
-    if (userChoiceString.compare("OFF") != 0)
-    {
-		myVendingMachine.printContents();
-		
+	VendingMachine myVendingMachine = stockVendingMachine();
+	bool done = false;
+	while (!done)		//write menu
+	{
+		cout << "======Main Menu======" << endl;
+		cout << "Enter any character to continue!" << endl;
+		string userChoiceString;
+		cin >> userChoiceString;
+
+		if (userChoiceString.compare("OFF") != 0)
+		{
+			myVendingMachine.printContents();
+			cout << "Enter product number!" << endl;
+			int userProductChoice;
+			cin >> userProductChoice;
+			Item userSelection = myVendingMachine.getItemAtIndex(userProductChoice - 1);
+			if (userSelection.getPrice() == -1)
+			{
+					cout << "Out of order." << endl;
+			}		
+			else 
+			{
+				cout << "Your selection is: " << userSelection.getProductName() << endl;
+				cout << "You owe: " << userSelection.getPrice() << endl;
+				takePayment(userSelection.getPrice());
+				myVendingMachine.removeItemAtIndex(userProductChoice - 1);
+			}
+		}
+		else
+		{
+			done = true;
+		}
 	}
+	return 0;
+}
+
+void takePayment(double moneyOwed)
+{
+	 
+	double userPayment;
+	cin >> userPayment;
+	if (userPayment == moneyOwed)
+	{
+		cout << "Enjoy your snack" << endl;
+	}	
+	else if (userPayment > moneyOwed)
+	{
+		double change = userPayment - moneyOwed;
+		cout << "Your change is " << change << ", enjoy your snack!" << endl;
+	}	
 	else
 	{
-		done = true;
-	}
-  }
-  return 0;
+		cout << "You still owe " << moneyOwed - userPayment << "." << endl;	
+		takePayment(moneyOwed - userPayment);
+	}	
 }
 
 VendingMachine stockVendingMachine()
