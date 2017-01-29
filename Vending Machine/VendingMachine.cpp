@@ -5,8 +5,10 @@ Date: 01/27/2017
 
 #include <iostream>
 #include <array>
+#include <iomanip>
 #include "Item.h"
 #include "VendingMachine.h"
+
 
 using namespace std;
 
@@ -19,7 +21,8 @@ void VendingMachine::printContents()
 {
 	for (int i = 0; i < PRODUCT_COUNT; i++)
 	{
-		cout << "Product Name at location " << i << " :" << merchandise[i].getProductName() << endl;
+		cout << setw(20) << "|" << /*merchandise[i].getProductName() <<*/ "|" << endl;
+		//cout << setw(20) << "|" << i << " : " << merchandise[i].getPrice() << "|" << endl;
 	}
 }
 

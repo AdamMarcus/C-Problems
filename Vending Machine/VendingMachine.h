@@ -20,6 +20,7 @@ class VendingMachine
 	VendingMachine();
 	void assignProductLocation(Item);
 	void printContents();
+	void centerText(string, int);
 	
 	private:
 	Item merchandise[PRODUCT_COUNT];
