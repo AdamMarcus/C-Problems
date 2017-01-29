@@ -5,8 +5,10 @@ Date: 01/27/2017
 
 #include <iostream>
 #include <array>
+#include <iomanip>
 #include "Item.h"
 #include "VendingMachine.h"
+
 
 using namespace std;
 

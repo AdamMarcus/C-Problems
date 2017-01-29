@@ -22,6 +22,7 @@ class VendingMachine
 	void printContents();
 	Item getItemAtIndex(int);
 	void removeItemAtIndex(int);
+	void centerText(string, int);
 	
 	private:
 	Item merchandise[PRODUCT_COUNT];
