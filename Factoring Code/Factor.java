@@ -16,8 +16,6 @@ import java.util.Scanner;
 public class Factor {
     // Main will look first for command line arguments to run with and if none are found redirect to userInteract
     public static void main(String[] args) throws IOException {
-        writePrimeListToFile("Primes100.txt", 100);
-
         if (args.length > 2) {
             String runType = args[0];
             String input = args[1];
